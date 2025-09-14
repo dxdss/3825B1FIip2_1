@@ -3,6 +3,7 @@
 #include <stdio.h>
 #include <math.h>
 
+
 //Input
 void main() {
 	printf("Input X coordinate of the FIRST centre.\n");
@@ -29,37 +30,31 @@ void main() {
 	double Radius2;
 	scanf("%lf", &Radius2);
 
-
-
-
-
+	
 	//Math
 	double Distance;
 	Distance = sqrt((Centre1X - Centre2X) * (Centre1X - Centre2X) + (Centre1Y - Centre2Y) * (Centre1Y - Centre2Y));
 
 	double RadiusSum;
-	RadiusSum = Radius1 + Radius2;
+	RadiusSum = abs(Radius1) + abs(Radius2);
 	
 	double MaxRadius;
-	if (Radius1 > Radius2) { 
-		MaxRadius = Radius1; 
+	if (abs(Radius1) > abs(Radius2)) { 
+		MaxRadius = abs(Radius1); 
 	}
 	else { 
-		MaxRadius = Radius2;
+		MaxRadius = abs(Radius2);
 	}
-
-
 
 
 	//Connditions and output
-	if ((Distance > RadiusSum)||(MaxRadius > Distance + (Radius1 + Radius2 - MaxRadius))) {
+	if ((Distance > RadiusSum)||(MaxRadius > Distance + (abs(Radius1) + abs(Radius2) - MaxRadius))) {
 		printf("Circles don't intersect and don't touch.\n"); 
 	}
-	else if ((Distance == RadiusSum)||(MaxRadius == Distance + (Radius1 + Radius2 - MaxRadius))) {
+	else if ((Distance == RadiusSum)||(MaxRadius == Distance + (abs(Radius1) + abs(Radius2) - MaxRadius))) {
 		printf("Circles touch each other.\n");
 	}
 	else {
 		printf("Circles intersect with each other.\n");
 	}
-
 }
