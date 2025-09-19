@@ -33,7 +33,7 @@ void main() {
 	int RD = abs(RE - RS);
 
 
-	// enum for chess pieces for the sake of readability
+	//Enum for chess pieces for the sake of readability
 	enum PIECE {
 		Rook = 1,
 		Bishop = 2,
@@ -43,13 +43,13 @@ void main() {
 	};
 
 
-	// starting and ending positions are the same
+	//Starting and ending positions are the same
 	if (CD == 0 && RD == 0) {
 		printf("Starting and endinng positions match.\n");
 	}
 
 
-	// ifs and output
+	//Ifs and output
 	else if ((CD == 2 && RD == 1) || (CD == 1 && RD == 2)) {
 
 		if (Piece == Knight) {
