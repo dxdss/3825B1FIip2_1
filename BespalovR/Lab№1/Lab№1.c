@@ -1,4 +1,4 @@
-//библиотеки
+//Libraries
 #define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
 #include <math.h>
@@ -7,7 +7,7 @@
 void main() {
 
 
-	//ввод( пока без проверки )
+	//Input ( no checking )
 	int CS;
 	printf("Input starting position collum.( A = 1 , B = 2 etc. )\n");
 	scanf("%d", &CS);
@@ -33,7 +33,7 @@ void main() {
 	int RD = abs(RE - RS);
 
 
-	//енам фигур для читаемости
+	// enum for chess pieces for the sake of readability
 	enum PIECE {
 		Rook = 1,
 		Bishop = 2,
@@ -43,13 +43,13 @@ void main() {
 	};
 
 
-	// старт конец совпдают
+	// starting and ending positions are the same
 	if (CD == 0 && RD == 0) {
 		printf("Starting and endinng positions match.\n");
 	}
 
 
-	// проверка вывод
+	// ifs and output
 	else if ((CD == 2 && RD == 1) || (CD == 1 && RD == 2)) {
 
 		if (Piece == Knight) {
