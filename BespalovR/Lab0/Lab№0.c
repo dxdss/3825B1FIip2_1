@@ -32,14 +32,11 @@ void main() {
 
 	
 	//Math
-	double Distance;
-	Distance = sqrt((Centre1X - Centre2X) * (Centre1X - Centre2X) + (Centre1Y - Centre2Y) * (Centre1Y - Centre2Y));
+	double Distance = sqrt((Centre1X - Centre2X) * (Centre1X - Centre2X) + (Centre1Y - Centre2Y) * (Centre1Y - Centre2Y));
 
-	double RadiusSum;
-	RadiusSum = abs(Radius1) + abs(Radius2);
+	double RadiusSum = abs(Radius1) + abs(Radius2);
 	
-	double RadiusDifference;
-	RadiusDifference = abs(Radius1 - Radius2);
+	double RadiusDifference = abs(Radius1 - Radius2);
 	
 
 	//Connditions and output
