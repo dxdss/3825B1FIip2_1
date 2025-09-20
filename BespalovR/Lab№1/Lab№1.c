@@ -7,28 +7,30 @@
 void main() {
 
 
-	//Input ( no checking )
-	int CS;
-	printf("Input starting position collum.( A = 1 , B = 2 etc. )\n");
+	//Input
+	//CS = Collum start  RS = Row start CE = Collum end RE = Row end
+	int CS = -1;
+	printf("Input STARTING position COLLUM.( A = 1 , B = 2 etc. )\n");
 	scanf("%d", &CS);
 
-	int RS;
-	printf("Input starting position row.\n");
+	int RS = -1;
+	printf("Input STARTING position ROW.\n");
 	scanf("%d", &RS);
 
-	int CE;
-	printf("Input ending position collum.( A = 1 , B = 2 etc. )\n");
+	int CE = -1;
+	printf("Input ENDING position COLLUM.( A = 1 , B = 2 etc. )\n");
 	scanf("%d", &CE);
 
-	int RE;
-	printf("Input ending position row.\n");
+	int RE = -1;
+	printf("Input ENDING position ROW.\n");
 	scanf("%d", &RE);
 
-	int Piece;
-	printf("Input piece. ( Rook - 1 , Bishop - 2 , Queen - 3 , Knight - 4 , King - 5 )\n");
+	int Piece = -1;
+	printf("Input PIECE. ( Rook - 1 , Bishop - 2 , Queen - 3 , Knight - 4 , King - 5 )\n");
 	scanf("%d", &Piece);
 
 
+	// CD = Collum difference RD = Row difference
 	int CD = abs(CE - CS);
 	int RD = abs(RE - RS);
 
@@ -41,11 +43,15 @@ void main() {
 		Knight = 4,
 		King = 5
 	};
-
+	
+	//Input check
+	if ( CS < 1 || CS > 8 || RS < 1 || RS > 8 || CE < 1 || CE > 8 || RE < 1 || RE > 8 || Piece < 1 || Piece > 5 ) {
+		printf("Incorrect input, please reastart and try again.\n");
+	}
 
 	//Starting and ending positions are the same
-	if (CD == 0 && RD == 0) {
-		printf("Starting and endinng positions match.\n");
+	else if (CD == 0 && RD == 0) {
+		printf("Starting and endinng positions match No ppiece can be in that position in one move.\n");
 	}
 
 
@@ -53,7 +59,7 @@ void main() {
 	else if ((CD == 2 && RD == 1) || (CD == 1 && RD == 2)) {
 
 		if (Piece == Knight) {
-			printf("Piece can move to that space.\n");
+			printf("Chosen piece can move to that space.\n");
 		}
 
 		else {
@@ -65,7 +71,7 @@ void main() {
 	else if (CD == 0 || RD == 0 || CD == RD) {
 
 		if (Piece == Queen) {
-			printf("Piece can move to that space.\n");
+			printf("Chosen piece can move to that space.\n");
 		}
 
 		else {
@@ -75,7 +81,7 @@ void main() {
 		if (CD <= 1 && RD <= 1) {
 
 			if (Piece == King) {
-				printf("Piece can move to that space.\n");
+				printf("Chosen piece can move to that space.\n");
 			}
 
 			else {
@@ -86,7 +92,7 @@ void main() {
 		if (CD == 0 || RD == 0) {
 
 			if (Piece == Rook) {
-				printf("Piece can move to that space.\n");
+				printf("Chosen piece can move to that space.\n");
 			}
 
 			else {
@@ -97,7 +103,7 @@ void main() {
 		else if (CD == RD) {
 
 			if (Piece == Bishop) {
-				printf("Piece can move to that space.\n");
+				printf("Chosen piece can move to that space.\n");
 			}
 
 			else {
