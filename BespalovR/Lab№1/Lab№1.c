@@ -51,7 +51,7 @@ void main() {
 
 	//Starting and ending positions are the same
 	else if (CD == 0 && RD == 0) {
-		printf("Starting and endinng positions match No ppiece can be in that position in one move.\n");
+		printf("Starting and endinng positions match No piece can be in that position in one move.\n");
 	}
 
 
