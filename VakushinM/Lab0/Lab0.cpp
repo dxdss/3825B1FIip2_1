@@ -1,6 +1,8 @@
-//0.1 Рациональное число
-//Определить, каково взаимное расположение двух окружностей(пересекаются, касаются, не пересекаются)
-//по их заданным координатам центров и радиусам.
+/*
+0.1 Рациональное число
+Определить, каково взаимное расположение двух окружностей(пересекаются, касаются, не пересекаются)
+по их заданным координатам центров и радиусам.
+*/
 
 #define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
@@ -11,14 +13,28 @@ void main() {
 
 	printf("Enter the coordinates of the first circle: x1, y1\n");
 	scanf("%f%f", &x1, &y1);
+
 	printf("Enter the radius of the first circle: r1\n");
 	scanf("%f", &r1);
+	if (r1 <= 0) {
+		printf("Incorrect input\n");
+		return(-1);
+	}
+	r1 = (round(r1 * 1000)) / 1000;	//Округеление r1 до третьего знака после запятой
+
 	printf("Enter the coordinates of the second circle: x2, y2\n");
 	scanf("%f%f", &x2, &y2);
+
 	printf("Enter the radius of the second circle: r2\n");
 	scanf("%f", &r2);
+	if (r2 <= 0) {
+		printf("Incorrect input\n");
+		return(-1);
+	}
+	r2 = (round(r2 * 1000)) / 1000;	//Округеление r2 до третьего знака после запятой
 
 	L = sqrt((x1 - x2) * (x1 - x2) + (y1 - y2) * (y1 - y2));
+	L = (round(L * 1000)) / 1000;	//Округеление L до третьего знака после запятой
 	
 	if (L > fmax(r1, r2)) {
 		if ((r1 + r2) < L) {
