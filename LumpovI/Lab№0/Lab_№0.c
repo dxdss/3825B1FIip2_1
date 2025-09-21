@@ -3,22 +3,51 @@
 #include <math.h>
 
 int main() {
+
 	double r1, r2, x1, y1, x2, y2 = 0;
 	while (scanf("%lf%lf%lf%lf%lf%lf", &r1, &r2, &x1, &y1, &x2, &y2) != 6 || r1 < 0 || r2 < 0) {
 		printf("Incorrect input!!!");
 		return -1;
 	}
-	double rast = pow(((x1 - x2) * (x1 - x2) - (y1 - y2) * (y1 - y2)), 0.5);
+	double rast = sqrt(((x1 - x2) * (x1 - x2) - (y1 - y2) * (y1 - y2)), 0.5);
 	double sum_rad = r1 + r2;
-	if (rast < sum_rad) {
-		printf("Okruzh. peresek");
-	} else if (rast > sum_rad) {
-		printf("Okruzh. ne peresek");
+	int x = 0;
+	if (rast < r1 || rast < r2) {
+		x = 2;
 	}
-	else if (rast == sum_rad) {
-		printf("Okruzh. kasautsya");
+	else {
+		x = 1;
 	}
-	else if (r1 == r2 && x1 == x2 && y1 == y2) {
-		printf("Okruzh. sovpadaut")
+	if (r1 == r2 && x1 == x2 && y1 == y2) {
+		printf("The circles coincide");
+		return -1;
+	}
+	else {
+
+		switch (x) {
+		case(1):
+			if (rast < sum_rad) {
+				printf("Circles externally intersect");
+			}
+			else if (rast > sum_rad) {
+				printf("Circles externally not intersect");
+			}
+			break;
+		case(2):
+			if (rast == fabs(r1 - r2)) {
+				printf("Circles touch internally");
+			}
+			else if (rast < fabs(r1 - r2)) {
+				printf("Circles not intersect internally");
+			}
+			else if (rast > fabs(r1 - r2)) {
+				printf("Circles intersect internally");
+			}
+			break;
+		default:
+			printf("Error!!!");
+			return -1;
+			break;
+		}
 	}
 }
