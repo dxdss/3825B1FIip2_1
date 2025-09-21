@@ -29,7 +29,7 @@ void main() {
 	x2 = (floor(x2 * 1000)) / 1000;	//Округеление x2 до третьего знака после запятой
 	y2 = (floor(y2 * 1000)) / 1000;	//Округеление y2 до третьего знака после запятой
 
-	printf("Enter the radius of the first circle to the third decimal place: r2\nThe remaining decimal places will be discarded.\n");
+	printf("Enter the radius of the second circle to the third decimal place: r2\nThe remaining decimal places will be discarded.\n");
 	scanf("%f", &r2);
 	if (r2 <= 0) {
 		printf("Incorrect input\n");
@@ -38,7 +38,6 @@ void main() {
 	r2 = (floor(r2 * 1000)) / 1000;	//Округеление r2 до третьего знака после запятой
 
 	L = sqrt((x1 - x2) * (x1 - x2) + (y1 - y2) * (y1 - y2));
-	//L = (round(L * 1000)) / 1000;	//Округеление L до третьего знака после запятой
 	
 	if (L > fmax(r1, r2)) {
 		if ((r1 + r2) < L) {
