@@ -6,6 +6,7 @@
 
 //Input
 void main() {
+
 	printf("Input X coordinate of the FIRST centre.\n");
 	double Centre1X;
 	scanf("%lf", &Centre1X);
@@ -30,28 +31,20 @@ void main() {
 	double Radius2;
 	scanf("%lf", &Radius2);
 
-	
-	//Math
-	double Distance;
-	Distance = sqrt((Centre1X - Centre2X) * (Centre1X - Centre2X) + (Centre1Y - Centre2Y) * (Centre1Y - Centre2Y));
 
-	double RadiusSum;
-	RadiusSum = abs(Radius1) + abs(Radius2);
-	
-	double MaxRadius;
-	if (abs(Radius1) > abs(Radius2)) { 
-		MaxRadius = abs(Radius1); 
-	}
-	else { 
-		MaxRadius = abs(Radius2);
-	}
+	//Math
+	double Distance = sqrt((Centre1X - Centre2X) * (Centre1X - Centre2X) + (Centre1Y - Centre2Y) * (Centre1Y - Centre2Y));\
+
+	double RadiusSum = abs(Radius1) + abs(Radius2);
+
+	double RadiusDifference = abs(Radius1 - Radius2);
 
 
 	//Connditions and output
-	if ((Distance > RadiusSum)||(MaxRadius > Distance + (abs(Radius1) + abs(Radius2) - MaxRadius))) {
-		printf("Circles don't intersect and don't touch.\n"); 
+	if ((Distance > RadiusSum) || (RadiusDifference > Distance)) {
+		printf("Circles don't intersect and don't touch.\n");
 	}
-	else if ((Distance == RadiusSum)||(MaxRadius == Distance + (abs(Radius1) + abs(Radius2) - MaxRadius))) {
+	else if ((Distance == RadiusSum) || (RadiusDifference == Distance)) {
 		printf("Circles touch each other.\n");
 	}
 	else {
