@@ -4,6 +4,7 @@
 
 void main() {
 	double x, y, r, X, Y, R = 0;
+	double EPS = 1e-6;
 	printf("x1 = "); scanf("%lf", &x);
 	printf("y1 = "); scanf("%lf", &y);
 	printf("r1 = "); scanf("%lf", &r);
@@ -11,14 +12,27 @@ void main() {
 	printf("y2 = "); scanf("%lf", &Y);
 	printf("r2 = "); scanf("%lf", &R);
 	double dist = sqrt((X - x) * (X - x) + (Y - y) * (Y - y));
-	if (dist > r + R) {
+	while (r < 0 - EPS || R < 0 - EPS) {
+		printf("Error, try again:\t");
+		scanf("%lf%lf", &r, &R);
+	}
+	if (dist == 0) {
+		printf("This centers of the circles coincide %lf", dist);
+	}
+	else if (dist > r + R) {
 		printf("This circles do not intersect %lf", dist);
 	}
-	else if (dist == r + R) {
-		printf("This circles touch %lf", dist);
-	}
-	else {
+	else if (r - R < dist < r + R) {
 		printf("This circles intersect %lf", dist);
+	}
+	else if (dist == r + R) {
+		printf("This circles externally touch %lf", dist);
+	}
+	else if (dist == r - R && dist > 0) {
+		printf("This circles are internally tangent %lf", dist);
+	}
+	else if (d < r - R) {
+		printf("One circle lies inside the other %lf", dist);
 	}
 
 }
