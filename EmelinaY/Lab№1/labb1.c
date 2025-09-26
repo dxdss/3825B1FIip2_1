@@ -31,8 +31,14 @@ int main() {
     double masst = h * w * tolst * plDVP;                    
     double masbok = 2 * h * d * tolbok * plDSP;              
     double maskr = 2 * w * d * tolkr * plDSP;                
-    double masdver = 2 * h * (w / 2) * toldver * plderevo;
-    double maspolk = (int)(h / 40) * (w * tolpolk * d)*plDSP;
+    double masdver =  h * w * toldver * plderevo;
+    double poslpolka = 0;
+    int countpolk = 0;
+    while (poslpolka <= h-40.5) {
+        countpolk += 1;
+        poslpolka += 40.5;
+    }
+    double maspolk = countpolk * (w * tolpolk * d)*plDSP;
     double sum_mas =( masst + masbok + maskr + masdver + maspolk)/1000.0;
     printf("\nCalculation results:\n");
     printf("Cabinet height: %.1f cm\n", h);
