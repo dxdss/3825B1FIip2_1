@@ -37,7 +37,7 @@ void main() {
 	double mas_dv = (h * tol_dv * w) * pderev;
 	double mas_pol = (d * tol_pol * w) * pDSP;   //масса одной полки
 
-	double mas_res = mas_st + mas_bok + mas_cr + mas_dv + 4 * mas_pol;  //на высоту от 180 до 220 см поместятся 4 полки
+	double mas_res = mas_st + mas_bok + mas_cr + mas_dv + floor((h - 2 * tol_cr) / 40.5) * mas_pol;  //на высоту от 180 до 220 см - толщина крышек сверху и снизу деленное на толщину полок и расстояние между ними
 	printf("Total weight = %lf", mas_res/1000);  //масса в кг
 
 }
