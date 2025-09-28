@@ -56,9 +56,9 @@ int main() {
     double topLowerMass = (DSPthickness * d * w * DSPdensity) * 2;
     double lastShelf = 0;
     int shelfCount = 0;
-    while (lastShelf <= h - 40.5) {
+    while (lastShelf <= h - 0.405) {
         shelfCount += 1;
-        lastShelf += 40.5;
+        lastShelf += 0.405;
     }
     double shelfMass = (d * SHELFthickness * w * DSPdensity) * shelfCount;
 
