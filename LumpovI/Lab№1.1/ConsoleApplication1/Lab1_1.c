@@ -54,11 +54,16 @@ int main() {
     double backMass = h * DVPthickness * w * DVPdensity;
     double doorsMass = h * WOODthickness * w * WOODdensity;
     double topLowerMass = (DSPthickness * d * w * DSPdensity) * 2;
-    int shelfCount = (h / 0.4) - 1;
+    double lastShelf = 0;
+    int shelfCount = 0;
+    while (lastShelf <= h - 40.5) {
+        shelfCount += 1;
+        lastShelf += 40.5;
+    }
     double shelfMass = (d * SHELFthickness * w * DSPdensity) * shelfCount;
 
     mass += sidewallsMass;
-    mass += backMass;
+    mass += backMass;   
     mass += shelfMass;
     mass += doorsMass;
     mass += topLowerMass;
