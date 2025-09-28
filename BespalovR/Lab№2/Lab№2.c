@@ -5,27 +5,21 @@
 
 
 void main() {
+
+
 	printf("Input gamemode. (1 - User guesses a hidden number. 2 - Program guesses a hidden number.)\n");
 	int gamemode = 0;
 	char c;
-	while ( scanf("\n%d", &gamemode) != 1 || (gamemode != 1 && gamemode != 2) ) {
+	while (scanf("\n%d", &gamemode) != 1 || (gamemode != 1 && gamemode != 2)) {
 		printf("Incorrect input. Please try again.\n");
 		while ((c = getchar()) != '\n') {};
 	}
 
 
-
-
-
-
-
-
-
-
 	int number = -1;
 	int guess = -1;
-
 	switch (gamemode) {
+
 
 	case 1:
 		srand(time(NULL));
@@ -55,32 +49,43 @@ void main() {
 
 
 	case 2:
+
 		printf("Come up with a number between 0 and 1000.\n");
 		while (scanf("%d", &number) != 1 || number < 0 || number >= 1000) {
 			printf("Incorrect input. Please try again.\n");
 			while ((c = getchar()) != '\n') {};
 		}
+
 		int Bottom_Border = 0;
 		int Upper_Border = 1000;
+		srand(time(NULL));
+
 		for (int guess_amount = 1; number != guess; guess_amount++) {
+
 			if (Bottom_Border >= Upper_Border) {
 				printf("Error.");
 				break;
 			}
+
 			guess = Bottom_Border + rand() % ( Upper_Border - Bottom_Border );
+
 			printf("Is your number %d? Print </=/> if your number is less/equal/higher.\n", guess);
-			while ( (int)(c = getchar()) > 62 || (int)(c = getchar()) < 60 ) {
-				printf("Incorrect input\n");
-			}
-			if ((int)c == 60 && guess < Upper_Border) {
+
+			while ( (c = getchar()) > 62 || c  < 60 ) {}
+
+			if ( c == 60 && guess < Upper_Border) {
 				Upper_Border = guess;
 			}
-			else if ((int)c == 62 && guess > Bottom_Border) {
+
+			else if ( c == 62 && guess > Bottom_Border) {
 				Bottom_Border = guess + 1;
 			}
-			else if ((int)c == 61 ) {
+
+			else if ( c == 61 && guess == number) {
 				printf("Your number is %d. It took me %d attempts to guess it.\n", guess, guess_amount);
 			}
+
+			else { printf("Incorrect input. Please try again.\n"); }
 		}
 	}
 }
