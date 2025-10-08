@@ -15,19 +15,19 @@ void main() {
 		double sumr = r1 + r2;
 		double dif = fabs(r1 - r2);
         if (d <= eps && dif <= eps) {
-            printf("sovpadaut ");
+            printf("The circles match ");
         }
         else if (fabs(d - sumr) <= eps || fabs(d - dif) <= eps) {
-            printf("kasautsa ");
+            printf("the circles touch ");
         }
         else if (d < sumr && d > dif) {
-            printf("peresekautsa ");
+            printf("the circles intersect ");
         }
         else if (d < dif) {
-            printf("odna vnutri drugoy, ne kasautsa ");
+            printf("The circles don't touch inside ");
         }
         else {
-            printf("ne peresekautsa ");
+            printf("The circles don't intersect ");
         }
 	}
 }
