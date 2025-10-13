@@ -9,12 +9,11 @@ void clearInputBuffer() {
 }
 
 void userGuess() {
-	srand(time(NULL));
 	int randomNumber = rand() % 1000 + 1;
 	int guess, attempts = 0;
-	
+
 	printf("MODE 1: You guess the number\n I have thought of a number from 1 to 1000. Try to guess!\n");
-	
+
 	do {
 		attempts++;
 		printf("Enter your guess:\n");
@@ -73,7 +72,12 @@ void computerGuess() {
 		else {
 			printf("Hooray! I guessed the number %d in %d attempts!\n\n", guess, attempts);
 		}
-	} while (sym !=  '=');
+
+		if (left > right) {
+			return
+				printf("The right number must be greater than the left one");
+		}
+	} while (sym != '=');
 }
 
 
@@ -85,6 +89,7 @@ int getGameMode() {
 }
 
 int main() {
+	srand(time(NULL));
 	int mode = getGameMode();
 	if (mode != 1 && mode != 2) {
 		return 0;
