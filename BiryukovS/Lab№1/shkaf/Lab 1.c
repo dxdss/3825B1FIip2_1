@@ -40,9 +40,9 @@ int main() {
 
     double verh = w * d * 0.015 * plDSP * 2;
 
-    double doors = h * (w / 2.0) * 0.01 * plwood * 2;
+    double doors = h * w * 0.01 * plwood;
 
-    int count = (int)(h / 0.4);
+    int count = (int)((h - 80) / (0.4 + 0,005);
     double polki = w * d * 0.005 * plDSP * count;
 
     double mass = dvpwall + bok + verh + doors + polki;
