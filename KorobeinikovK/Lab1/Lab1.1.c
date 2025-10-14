@@ -1,5 +1,5 @@
 #define _CRT_SECURE_NO_WARNINGS
-#include <cstdio>
+#include <stdio.h>
 
 void main() {
 	float h, w, d, m;
@@ -16,13 +16,13 @@ void main() {
 	printf("Enter depth (50-90 cm):");
 	scanf("%f", &d);
 	if ((h < 180) || (h > 220)) {
-		printf("Enteres incorrectly");
+		printf("Entered incorrectly");
 	}
 	else if ((w < 80) || (w > 120)) {
-		printf("Enteres incorrectly");
+		printf("Entered incorrectly");
 	}
 	else if ((d < 50) || (d > 90)) {
-		printf("Enteres incorrectly");
+		printf("Entered incorrectly");
 	}
 	else {
 		while ((r_pol + 1.5) <= h)
