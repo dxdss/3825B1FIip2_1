@@ -40,31 +40,31 @@ void main() {
 	char pos2[3] = "a1";
 	unsigned short chess = 1;
 
-	printf("Enter first position: ");
+	printf("Enter first position (ex: a1): ");
 	while (scanf("%2s", &pos1) != 1 || 97 > pos1[0] || pos1[0] > 104 || 49 > pos1[1] || pos1[1] > 56) {
 		printf("Encorrect enter\n");
 		clearInput();
-		printf("Enter first position: ");
+		printf("Enter first position (ex: a1): ");
 	}
 
 	clearInput(); //protect from enter like this:<correct_data><some_trash>
 
-	printf("Enter second position: ");
+	printf("Enter second position (ex: a1): ");
 	while (scanf("%2s", &pos2) != 1 || 97 > pos2[0] || pos2[0] > 104 || 49 > pos2[1] || pos2[1] > 56 || pos1[0] == pos2[0] && pos1[1] == pos2[1]) {
 		printf("Encorrect enter\n");
 		clearInput();
-		printf("Enter second position: ");
+		printf("Enter second position (ex: a1): ");
 	}
 
 	clearInput();
 
 	printf("--------------------------\n");
 	printf("Select chess piece:\n1. King\n2. Queen\n3. Rook\n4. Bishop\n5. Knight\n");
-	printf("Enter you choose: ");
+	printf("Enter you choose (1, 2, 3, 4, 5): ");
 	while (scanf("%hu", &chess) != 1 || chess == 0 || chess > 5) {
 		printf("Encorrect enter\n");
 		clearInput();
-		printf("Enter you choose: ");
+		printf("Enter you choose (1, 2, 3, 4, 5): ");
 	}
 	clearInput();
 	printf("--------------------------\n");
