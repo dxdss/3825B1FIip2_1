@@ -5,6 +5,7 @@
 
 
 void main() {
+
 	srand(time(NULL));
 
 	char v;
@@ -40,19 +41,14 @@ void main() {
 		printf("You guessed right \n");
 	}
 	else {
-		printf("Enter number: \n");
-		scanf(" %d", &pol);
-		int prog;
+		printf("Guess a number from 1 to 1000 \n");
 		int left = 1;
 		int right = 1000;
 		char osenka;
+		int prog = rand() % (right - left) + left;
 		
 		
 		do {
-			prog = rand() % right;
-			while (left > prog) {
-				prog = rand() % right;
-			}
 			printf("Number programm = %d \n", prog);
 			printf("Rate number\n");
 
@@ -69,16 +65,24 @@ void main() {
 			}
 			
 			if (osenka == '>') {
-				left = prog;
+				left = prog + 1;
 			}
 			else if (osenka == '<') {
-				right = prog;
+				right = prog - 1;
 			}
+
 			count += 1;
 
+			if (left > right) {
+				printf("Error answers! Try again.\n");
+				left = 1;
+				right = 1000;
+				count = 0;
+			}
+			prog = rand() % (right - left) + left;
+			
 		} while (osenka != '=');
 		printf("Programm guessed right \n");
-		printf("Secret number = %d \n", prog);
 	}
 	printf("Number of attempts: %d", count);
 
