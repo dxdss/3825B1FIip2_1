@@ -1,11 +1,6 @@
 #define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
 
-//QUESTIONS:
-/*
-1. Line: 31; Replace || with Bitwise XOR - good idea?
-*/
-
 void clearInput() {
 	char ch = '\0';
 	while ((ch = getchar()) != '\n' && ch != EOF);
@@ -24,7 +19,7 @@ char isBishopCanMove(char pos1[3], char pos2[3]) {
 }
 
 char isKnightCanMove(char pos1[3], char pos2[3]) {
-	return abs(pos2[0] - pos1[0]) == 3 && abs(pos2[1] - pos1[1]) == 1 || abs(pos2[0] - pos1[0]) == 1 && abs(pos2[1] - pos1[1]) == 3;
+	return abs(pos2[0] - pos1[0]) == 2 && abs(pos2[1] - pos1[1]) == 1 || abs(pos2[0] - pos1[0]) == 1 && abs(pos2[1] - pos1[1]) == 2;
 }
 
 char isQueenCanMove(char pos1[3], char pos2[3]) {
@@ -112,11 +107,11 @@ void main() {
 			}
 			break;
 		case 5:
-			if (isBishopCanMove(pos1, pos2)) {
-				printf("Kinght can move");
+			if (isKnightCanMove(pos1, pos2)) {
+				printf("Knight can move");
 			}
 			else {
-				printf("Kinght can't move\n");
+				printf("Knight can't move\n");
 				printCanMoveChess(pos1, pos2);
 			}
 			break;
