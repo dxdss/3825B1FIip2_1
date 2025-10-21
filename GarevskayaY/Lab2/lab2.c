@@ -51,40 +51,42 @@ void main()
 		int b = 1000;
 
 		printf("Come up with the number from 1 to 1000\n");
-		while (scanf("%d", &num) != 1 || num < 1 || num > 1000) {
-			printf("Error, try again\t");
-			while ((c = getchar()) != '\n' && c != EOF) {};
-		}
+		printf("Press Enter when you are ready\n");
+		while ((c = getchar()) != '\n' && c != EOF) {};
+
 		srand(time(NULL));
 
-		for (guess_q; num != guess; guess_q++) {
+		for (guess_q; guess_q++) {
 			if (a > b || a == b) {
 				printf("Error, no numbers left in range");
 			}
 
-			guess = a + rand() % (b - a + 1);
+			guess = (a + b) / 2;
 			printf("Maybe it is %d? Print </=/>\t", guess);
-			
+
 			while ((c = getchar()) != '<' && c != '=' && c != '>') {
 				if (c != '\n') {
 					printf("Please enter only <, = or >:\t");
 				}
 			}
-			if (c == '<' && guess < b) {
+
+			if (c == '<') {
 				b = guess - 1;
 			}
-			if (c == '>' && guess > a) {
+			else if (c == '>') {
 				a = guess + 1;
 			}
-			if (c == '=' && guess == num) {
-				printf("I guessed your number! Number of attempts: %d", guess_q);
+			else if (c == '=') {
+				printf("I guessed your number! Number of attempts: %d\n", guess_q);
 				break;
 			}
+
 			if (a > b) {
 				printf("You gave erroneous hints. The number cannot exist.\n");
 				break;
 			}
 			
 		}
+		break;
 	}
 }
