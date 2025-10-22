@@ -15,19 +15,15 @@ int main() {
 		if (c == ' ' || c == '\t') {
 			state = OUT;
 		}
-		else if (letter) {
-			if (state != WORD) {
-				state = WORD;
-				++nw;
-			}
+		else if (letter && (state != WORD)) {
+			state = WORD;
+			++nw;
 		}
-		else if (digit) {
-			if (state != NUM) {
-				state = NUM;
-				++nn;
-			}
+		else if (digit && (state != NUM)) {
+			state = NUM;
+			++nn;
 		}
-		else {
+		else if (state != OUT) {
 			state = OUT;
 		}
 	}
