@@ -42,35 +42,25 @@ void firstMode() {
 }
 
 void secondMode() {
-	unsigned short user_number = 0;
-
-	printf("Enter you number: ");
-	while (scanf("%hd", &user_number) != 1 || user_number < 1 || user_number > 1000) {
-		printf("Encorrect enter or number not in range 1-1000\n");
-		clearInput();
-		printf("Enter you number: ");
-	}
-
 	unsigned short bot_number = 0;
 	unsigned short max = 1000;
 	unsigned short min = 1;
 	unsigned short tries_count = 0;
+	char number_status = ' ';
 
-	while (user_number != bot_number) {
-		bot_number = (max + min) / 2;
+	while (number_status != '=') {
+		bot_number = min + (max - min) / 2;
 		++tries_count;
 		printf("Bot number: %hd\n", bot_number);
 
-		clearInput();
-
-		char number_status = '=';
-		char compare_result = compareNumbers(bot_number, user_number);
 		printf("Enter status (<, =, >): ");
-		while (scanf("%c", &number_status) != 1 || number_status != compare_result) {
+		while (scanf("%c", &number_status) != 1 || number_status != '<' && number_status != '=' && number_status != '>') {
 			printf("Encorrect enter\n");
 			clearInput();
 			printf("Enter status (<, =, >): ");
 		}
+		clearInput();
+
 		if (number_status == '>') {
 			max = bot_number - 1;
 		}
@@ -85,17 +75,19 @@ void main() {
 	srand(time(0));
 	unsigned int mode = 0;
 	printf("Select mode (1, 2): ");
-	while (scanf("%d", &mode) != 1 || mode - 1 > 1) {
+	while (scanf("%d", &mode) != 1 || mode < 1 || mode > 2) {
 		printf("Encorrect enter\n");
 		clearInput();
 		printf("Select mode (1, 2): ");
 	}
 	clearInput();
 
-	if (mode - 1) {
-		secondMode();
-	}
-	else {
+	switch (mode) {
+	case 1:
 		firstMode();
+		break;
+	case 2:
+		secondMode();
+		break;
 	}
 }
