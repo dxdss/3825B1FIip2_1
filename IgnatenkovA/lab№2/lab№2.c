@@ -1,4 +1,4 @@
-#define _CRT_SECURE_NO_WARNINGS
+п»ї#define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
@@ -52,60 +52,42 @@ void main()
             }
         } while (q != g);
         printf("you found\n");
-        printf("number of attempts = %d", k + 1); // + одна верная попытка
+        printf("number of attempts = %d", k + 1); // + РѕРґРЅР° РІРµСЂРЅР°СЏ РїРѕРїС‹С‚РєР°
     }
     else if (r == '2')
     {
         srand(time(NULL));
         int k = 0;
-        printf("enter a number from 1 to 1000\n");
-        int q;
-        while (1)
-        {
-            if (scanf("%d", &q) == 1) {
-                if ((q >= 1) && (q <= 1000))
-                {
-                    break;
-                }
-                printf("incorrect!\n");
+        printf("guess a number from 1 to 1000\n");
+        int g;
+        g = rand() % 1000 + 1;
+        int min = 0, max = 1001;
+        char z[2];
+        do {
+            printf("%d\n", g);
+            scanf("%s", &z);
+            if (z[0] == '<')
+            {
+                min = g;
+                g = min + ((max - min) / 2);
+                k = k + 1;
             }
-            else {
-                printf("incorrect!\n");
-                while (getchar() != '\n');
+            else if (z[0] == '>')
+            {
+                max = g;
+                g = min + ((max - min) / 2);
+                k = k + 1;
             }
-        }
-        if ((q <= 1000) && (q >= 1))
-        {
-            int g;
-            g = rand() % 1000 + 1;
-            int min = 0, max = 1001;
-            char z[2];
-            do {
-                printf("%d\n", g);
-                scanf("%s", &z);
-                if (z[0] == '<')
-                {
-                    min = g;
-                    g = rand() % (max - min - 1) + (min + 1);
-                    k = k + 1;
-                }
-                else if (z[0] == '>')
-                {
-                    max = g;
-                    g = rand() % (max - min - 1) + (min + 1);
-                    k = k + 1;
-                }
-                else if (z[0] == '=')
-                {
-                    printf("i found\n");
-                    printf("number of attempts = %d", k + 1); // + одна верная попытка
-                    break;
-                }
-                else
-                {
-                    printf("incorrect\n");
-                }
-            } while (1);
-        }
+            else if (z[0] == '=')
+            {
+                printf("i found\n");
+                printf("number of attempts = %d", k + 1); // + РѕРґРЅР° РІРµСЂРЅР°СЏ РїРѕРїС‹С‚РєР°
+                break;
+            }
+            else
+            {
+                printf("incorrect\n");
+            }
+        } while (1);
     }
 }
