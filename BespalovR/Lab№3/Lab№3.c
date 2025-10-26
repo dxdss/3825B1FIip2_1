@@ -23,7 +23,7 @@ void main() {
 	char array[5];
 	char num[10] = { 0 };
 	srand(time(NULL));
-	while (i < lngth ) {
+	while ( i < lngth ) {
 		if (num[t = rand() % 10] == 0 && (t > 0 || i > 0)) {
 			num[array[i++] = t] += 1;
 		}
@@ -31,18 +31,19 @@ void main() {
 
 
 	//Game itself
+	char swtch;
 	char cows;
 	do {
 
-		cows = t = 0;
+		cows = swtch = t = 0;
 		while ((c = getchar()) != '\n') {};
-		printf("Make a guess.\n");
+		printf("Guess a number. First %d charachters will be taken as your attempt.\n", lngth);
 
 		while (i != 0) {
-			//There's some strange behaviour of endlines with getchar, dunno how to fix it
 
-			if ((c = getchar() - '0') > 9 || c < 0) {
-				printf("Error.\n");
+			if ((c = getchar() - '0') > 9 || c < 0 ) {
+				printf("Incorrect innput. Input number of length %d.\n", lngth);
+				swtch += 1;
 				break;
 			}
 
@@ -56,7 +57,9 @@ void main() {
 
 			--i;
 		}
-		printf("There is %d cows and %d oxen.\n", cows, t);
+		if ( swtch == 0 )  {
+			printf("There is %d cows and %d oxen.\n", cows, t);
+		}
 		i = lngth;
 	} while (cows != lngth );
 
