@@ -3,7 +3,7 @@
 #include <stdlib.h>
 #include <time.h>
 int unique_dig(int num, int len) {
-	int digits[10] = { 0 };
+	int digits[10] = {0};
 	for (int i = 0; i < len; i++) {
 		int dig = num % 10;
 		if (digits[dig]) {
@@ -22,8 +22,8 @@ int gen_num(int n) {
 	int first_dig = rand() % 9 + 1;
 	num = pos_dig[first_dig];
 
-	for (int i = first_dig; i < c - 1; i++) {
-		pos_dig[i] == pos_dig[i + 1];
+	for (int i = first_dig; i < c-1; i++) {
+		pos_dig[i] = pos_dig[i + 1];
 	}
 	c--;
 	for (int i = 1; i < n; i++) {
@@ -36,7 +36,7 @@ int gen_num(int n) {
 	}
 	return num;
 }
-void bulls_and_cows(int secret, int guess, int n, int* cows, int* bulls) {
+void bulls_and_cows(int secret, int guess, int n, int *cows, int *bulls) {
 	*bulls = 0;
 	*cows = 0;
 	int sec_num[5], guess_num[5];
@@ -53,7 +53,7 @@ void bulls_and_cows(int secret, int guess, int n, int* cows, int* bulls) {
 		}
 	}
 	//коровы
-	for (int i = 0; i < n; i++) {
+	for(int i = 0; i<n;i++){
 		for (int j = 0; j < n; j++) {
 			if (i != j && sec_num[i] == guess_num[j]) {
 				(*cows)++;
@@ -64,10 +64,13 @@ void bulls_and_cows(int secret, int guess, int n, int* cows, int* bulls) {
 int main() {
 	srand(time(NULL));
 	int n;
-	printf("Enter number(2-5):");
-	scanf("%d", &n);
-	if (n < 2 || n>5) {
-		printf("Incorrect");
+	while (1) {
+		printf("Enter n (2-5): ");
+		if (scanf("%d", &n) == 1 && (n >= 2 && n <= 5)) {
+			break;
+		}
+		printf("Please enter a different number(2-5).\n");
+		while (getchar() != '\n');
 	}
 	int sec = gen_num(n);
 	printf("Guess number\n");
@@ -79,13 +82,21 @@ int main() {
 		for (int i = 1; i < n; i++) {
 			min *= 10;
 		}
-		if (guess < min || guess >= min * 10 || !unique_dig(guess, n)) {
-			printf("Incorrect\n");
+		if (guess <= 0) {
+			printf("This number is not positive\n");
+			continue;
+		}
+		if (guess < min || guess >= min * 10) {
+			printf("Number not length %d\n", n);
+			continue;
+		}
+		if (!unique_dig(guess, n)) {
+			printf("There are identical digits\n");
 			continue;
 		}
 		int bull, cow;
 		bulls_and_cows(sec, guess, n, &cow, &bull);
-		printf("Cows: %d, Bulls: %d\n", &cow, &bull);
+		printf("Cows: %d, Bulls: %d\n", cow, bull);
 		if (bull == n) {
 			printf("You Won! Number is %d", sec);
 			break;
