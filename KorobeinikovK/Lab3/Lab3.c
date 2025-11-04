@@ -77,7 +77,11 @@ int main() {
 	while (1) {
 		int guess;
 		printf("Your option:");
-		scanf("%d", &guess);
+		if (scanf("%d", &guess) != 1) {
+			printf("Please enter a number\n");
+			while (getchar() != '\n');
+			continue;
+		}
 		int min = 1;
 		for (int i = 1; i < n; i++) {
 			min *= 10;
