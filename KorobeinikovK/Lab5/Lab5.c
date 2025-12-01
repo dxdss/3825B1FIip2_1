@@ -30,11 +30,14 @@ int partition(struct per arr[], int l, int r) {
 void bubble_sort(struct per arr[], int sz) {
 	for (int i = 0; i < sz - 1; ++i) {
 		int flag = 1;
-		for (int j = sz - 1; (j > i) && (arr[j - 1].age < arr[j].age); --j) {
-			struct per temp = arr[j - 1];
-			arr[j - 1] = arr[j];
-			arr[j] = temp;
-			flag = 0;
+		for (int j = sz - 1; (j > i); --j) {
+			if (arr[j - 1].age < arr[j].age) {
+				struct per temp = arr[j - 1];
+				arr[j - 1] = arr[j];
+				arr[j] = temp;
+				flag = 0;
+			}
+			
 		}
 		if (flag) {
 			break;
