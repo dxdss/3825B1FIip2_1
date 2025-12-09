@@ -201,7 +201,7 @@ void ser_exper(func_info func[], int count) {
 		while (getchar() != '\n');
 		return;
 	}
-	printf("Enter point x:\n");
+	printf("Enter point x:");
 	if (scanf("%Lf", &x) != 1) {
 		printf("x entered incorrectly!");
 		while (getchar() != '\n');
@@ -224,7 +224,7 @@ void ser_exper(func_info func[], int count) {
 		int comp_elem = 0;
 		long double res = func[f_c - 1].tay_f(x, nm, &comp_elem);
 		if (isnan(res)) {
-			printf("%3d | %9d |Calculation error|No data\n", nm, comp_elem);
+			printf("| %9d |Calculation error|No data\n", comp_elem);
 			continue;
 		}
 		printf("| %9d |  %17.10Lf   | %14.10Lf\n", comp_elem, res, ABS(res-ref_val));
