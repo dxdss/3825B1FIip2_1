@@ -15,7 +15,7 @@ typedef struct func_info {
 	const char* name;
 	tayf tay_f;
 	reff ref_f;
-};
+}func_info;
 
 void f_menu() {
 	printf("Function selection menu:\n");
